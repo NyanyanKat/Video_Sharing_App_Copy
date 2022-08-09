@@ -3,6 +3,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 
 // Routes
 import userRoutes from "./routes/users.js";
@@ -27,6 +28,12 @@ const connect = () => {
     });
 };
 
+const CorsOptions = {
+  Credentials: true,
+  ///..other Options
+};
+
+app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 //res.cookie(...)
 app.use(cookieParser());
 
